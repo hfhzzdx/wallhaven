@@ -2,7 +2,7 @@
 壁纸网站爬虫
 1. 安装依赖
 ```shell
-pip install -r requements.txt
+pip install -r requirements.txt
 ```
 2. wallhaven_cc.py
    > 为wallhaven的工具类,参考 [WallhavenApi](https://github.com/Goblenus/WallhavenApi)
