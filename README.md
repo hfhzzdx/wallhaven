@@ -15,7 +15,9 @@ pip install -r requirements.txt
    > 修改路径方法:  在代码的第232-234
    > ![image](https://user-images.githubusercontent.com/44967393/163549220-69bbf617-20b4-47d2-9f10-74d14810e4b0.png)
 
-5. get_wallpaper_Threading.py
+4. get_wallpaper_Threading.py
    > 加入threading
    > 
    > 生成路径,需要手动指定,可相对路径也可绝对路径
+5. img2char.py
+   > 输入图片父目录,循环输出路径下的图片字符画
