@@ -21,3 +21,7 @@ pip install -r requirements.txt
    > 生成路径,需要手动指定,可相对路径也可绝对路径
 5. img2char.py
    > 输入图片父目录,循环输出路径下的图片字符画
+6. tk_window.cpython-37.pyc
+   > GUI图形化爬虫工具
+   > 需要拷贝一份wallhaven_cc.py 重命名为wallhavenapi.py 
+   > 明天我将修复该BUG
