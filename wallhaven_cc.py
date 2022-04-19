@@ -161,38 +161,66 @@ class WallhavenApiV1:
                     return response.json()
                 except:
                     raise UnhandledException
-
+            print("wallhaven_cc _request",end='\t')
+            print(response)
             return response
 
     def _url_format(self, *args):
         url = self.base_url
         url += "/" if not url.endswith("/") else ""
-
         return url + "/".join((str(x) for x in args))
 
     @staticmethod
-    def _category(general=True, anime=True, people=False):
+    def _category_(general=True, anime=True, people=False):
         return "{}{}{}".format(int(general), int(anime), int(people))
 
     @staticmethod
-    def _purity(sfw=True, sketchy=True, nsfw=False):
+    def _category(categories):
+        if categories == 'general':
+            return '100'
+        elif categories == 'anime':
+            return '010'
+        elif categories == 'people':
+            return '001'
+        else:
+            return '111'
+
+    @staticmethod
+    def _purity_(sfw=True, sketchy=True, nsfw=False):
+
         return "{}{}{}".format(int(sfw), int(sketchy), int(nsfw))
+
+    @staticmethod
+    def _purity(purities):
+        purities_list = str(purities).split(".")
+        if purities_list[0] == 'Purity':
+            if purities_list[1] == 'sfw':
+                return '100'
+            elif purities_list[1] == 'sketchy':
+                return '010'
+            elif purities_list[1] == 'nsfw':
+                return '001'
+            else:
+                return '000'
+        else:
+            return '000'
 
     def search(self, q=None, categories=None, purities=None, sorting=None, order=None, top_range=None, atleast=None,
                resolutions=None, ratios=None, colors=None, page=None, seed=None):
         params = {}
         if q is not None:
             params["q"] = q
-
         if categories is not None:
-            categories = categories if type(categories) is list else [categories]
-            params["categories"] = self._category(Category.general in categories, Category.anime in categories,
-                                                  Category.people in categories)
+            # categories = categories if type(categories) is list else [categories]
+            # params["categories"] = self._category(Category.general in categories, Category.anime in categories,
+            #                                       Category.people in categories)
+            params["categories"] = self._category(categories)
 
         if purities is not None:
-            purities = purities if type(purities) is list else [purities]
-            params["purity"] = self._purity(Purity.sfw in purities, Purity.sketchy in purities,
-                                            Purity.nsfw in purities)
+            # purities = purities if type(purities) is list else [purities]
+            # params["purity"] = self._purity(Purity.sfw in purities, Purity.sketchy in purities,
+            #                                 Purity.nsfw in purities)
+            params["purity"] = self._purity(purities)
 
         if sorting is not None:
             params["sorting"] = sorting.value
@@ -222,7 +250,6 @@ class WallhavenApiV1:
 
         if seed is not None:
             params["seed"] = seed
-
         return self._request(True, method="get", url=self._url_format("search"), params=params)
 
     def wallpaper(self, wallpaper_id):
