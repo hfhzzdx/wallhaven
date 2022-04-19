@@ -1,5 +1,6 @@
 # wallhaven
 壁纸网站爬虫
+#####环境 python3.7.x
 1. 安装依赖
 ```shell
 pip install -r requirements.txt
