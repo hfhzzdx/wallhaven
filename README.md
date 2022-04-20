@@ -27,3 +27,17 @@ pip install -r requirements.txt
   
   ![image](https://user-images.githubusercontent.com/44967393/163918573-9663db0d-a4f1-49ae-b358-281a7515751c.png)
 
+
+
+
+  
+  等鄙人有闲暇时间了,再进行优化
+   
+    >  待优化项目:
+    > 
+    > 1. 加入搜索框
+    >
+    > 2. 更改搜索类别和级别为复选框
+    >
+    > 3. 下载图片日志输出到UI界面
+   
